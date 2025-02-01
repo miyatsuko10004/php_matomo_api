@@ -18,7 +18,7 @@ public static function getVisitorsLastVisit(array $userIds): array
 
         foreach (array_chunk($userIds, $batchSize) as $userBatch) {
             // `OR` を使って UserId を連結
-            $segment = urlencode("userId==" . implode(" OR userId==", $userBatch));
+            $segment = urlencode("userId==" . implode(",userId==", $userBatch));
 
             // APIパラメータを定義
             $apiParams = [
